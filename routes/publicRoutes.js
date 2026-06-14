@@ -27,6 +27,13 @@ const homeData = {
       "Memahami dan mendalami Qo'idah-Qo'idah bacaan Al Qur'an.",
       "Mengkaji, memahami dan mengamalkan isi kandungan Al Qur'an.",
       "Menjadikan Al Qur'an sebagai pedoman hidup sepanjang hayat."
+    ],
+
+    landasan: [
+      "Al-Qur'an dan As-Sunnah",
+      "Pancasila",
+      "Undang-Undang Dasar 1945",
+      "Peraturan perundang-undangan yang berlaku di bidang pendidikan"
     ]
   },
 
