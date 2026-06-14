@@ -18,7 +18,7 @@ const homeData = {
 
   profil: {
     pendahuluan:
-      "Pondok Pesantren Al Qur'an Al Furqon berdiri pada tahun 1976 yang berlokasi di Cilendek Barat Kota Bogor oleh Abah KH. Abdurrochman...",
+      "Pondok Pesantren Al Qur'an Al Furqon berdiri pada tahun 1976 yang berlokasi di Cilendek Barat Kota Bogor oleh Abah KH. Abdurrochman, lalu bertambah perkembangannya dengan membangun kembali pada tahun 1992 di daerah Cimulang-Rancabungur, yang sampai saat ini perkembangannya masih tetap eksis. Terlebih pada tahun 2004 telah dibuka Pendidikan Formal berupa Madrasah Tsanawiyah (MTs) Al Furqon dan pada tahun 2015 dibuka juga Sekolah Menengah Kejuruan (SMK) Al Furqon. Kedua lembaga formal ini dalam operasionalnya memadukan antara Kurikulum Kementrian Agama dan Kurikulum Pendidikan Nasional, sehingga dapat diharapkan mencetak generasi Qur'ani dengan mengembangkan daya fikir dan dzikir.",
 
     visi:
       "Membentuk Generasi Qur'ani yang berdaya Fikir dan Dzikir.",
