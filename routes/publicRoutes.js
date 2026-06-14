@@ -30,10 +30,7 @@ const homeData = {
     ],
 
     landasan: [
-      "Al-Qur'an dan As-Sunnah",
-      "Pancasila",
-      "Undang-Undang Dasar 1945",
-      "Peraturan perundang-undangan yang berlaku di bidang pendidikan"
+      "Al Qur'an surat An-Nisa ayat 9, yang artinya: 'Dan hendaklah takut kepada Allah, orang-orang yang seandainya meninggalkan dibelakang mereka anak-anak yang lemah, yang mereka khawatir terhadap (kesejahteraan) mereka. Oleh sebab itu hendaklah mereka bertaqwa kepada Allah dan hendaklah berbicara dengan tutur kata yang benar.'",
     ]
   },
 
