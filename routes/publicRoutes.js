@@ -210,6 +210,66 @@ const programPageData = {
         "Melalui latihan lapangan, kegiatan kemah, kerja tim, dan aktivitas sosial, santri dibentuk menjadi pribadi aktif, mandiri, peduli, dan bertanggung jawab.",
       features: ["Leadership", "Mandiri", "Kerja Sama", "Disiplin"],
     },
+    {
+      title: "Tahfidzul Qur'an",
+      subtitle: "Hafalan & Murajaah",
+      iconKey: "quran",
+      image: "/tahfidz.jpg",
+      desc: "Program pembinaan hafalan Al-Qur'an secara bertahap dan terarah.",
+      longDesc:
+        "Santri dibimbing untuk menghafal, menjaga hafalan, memperbaiki bacaan, dan membangun kedekatan dengan Al-Qur'an melalui setoran serta murajaah rutin.",
+      features: ["Hafalan", "Murajaah", "Setoran", "Tajwid"],
+    },
+    {
+      title: "Muhadhoroh",
+      subtitle: "Public Speaking Islami",
+      iconKey: "users",
+      image: "/muhadhoroh.jpg",
+      desc: "Melatih keberanian berbicara di depan umum dengan adab Islami.",
+      longDesc:
+        "Santri dilatih menyampaikan pidato, ceramah, kultum, dan presentasi sehingga memiliki kemampuan komunikasi yang baik dan percaya diri.",
+      features: ["Pidato", "Ceramah", "Public Speaking", "Percaya Diri"],
+    },
+    {
+      title: "Kaligrafi",
+      subtitle: "Seni Tulis Islami",
+      iconKey: "star",
+      image: "/kaligrafi.jpg",
+      desc: "Mengembangkan kreativitas santri melalui seni kaligrafi Islam.",
+      longDesc:
+        "Program ini melatih keterampilan menulis huruf Arab dengan kaidah yang benar serta mengembangkan jiwa seni dan ketelitian santri.",
+      features: ["Kaligrafi", "Seni", "Kreativitas", "Ketelitian"],
+    },
+    {
+      title: "Majelis Ta'lim",
+      subtitle: "Kajian Keislaman",
+      iconKey: "book",
+      image: "/majelis.jpg",
+      desc: "Pembinaan ilmu agama melalui kajian rutin dan diskusi keislaman.",
+      longDesc:
+        "Santri mengikuti kajian keislaman yang membahas aqidah, fiqih, akhlak, dan kehidupan sehari-hari sesuai tuntunan Islam.",
+      features: ["Aqidah", "Fiqih", "Akhlak", "Kajian"],
+    },
+    {
+      title: "Kitab Kuning",
+      subtitle: "Kajian Turats",
+      iconKey: "book",
+      image: "/kitab-kuning.jpg",
+      desc: "Mempelajari kitab-kitab klasik sebagai dasar keilmuan pesantren.",
+      longDesc:
+        "Santri mempelajari berbagai kitab kuning seperti Ta'lim Muta'allim, Jurumiyah, Safinatun Najah, dan kitab lainnya secara bertahap.",
+      features: ["Ta'lim", "Jurumiyah", "Safinah", "Turats"],
+    },
+    {
+      title: "Olahraga",
+      subtitle: "Kesehatan & Kebugaran",
+      iconKey: "campground",
+      image: "/olahraga.jpg",
+      desc: "Menjaga kesehatan jasmani melalui olahraga dan senam pagi.",
+      longDesc:
+        "Santri dibiasakan hidup sehat dengan kegiatan olahraga rutin yang meningkatkan kebugaran, disiplin, dan kerja sama.",
+      features: ["Senam", "Kebugaran", "Sehat", "Disiplin"],
+    },
   ],
 
   stats: [
