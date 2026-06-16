@@ -122,15 +122,15 @@ const homeData = {
     {
       iconKey: "teacher",
       name: "Abah Kh Abdurrahman bin Kh Abdul Karim",
-      role: "Pengasuh Pesantren",
+      role: "Pendiri Pondok Pesantren",
       image: "/Abah Kh Abdurrahman bin Kh Abdul Karim.png",
       focus: "Pembinaan akhlak, adab, ibadah, dan arah pendidikan santri.",
-      badge: "Pengasuh",
+      badge: "Pendiri",
     },
     {
       iconKey: "quran",
       name: "Abi Kh Dadun Abdurrohim bin Kh Abdurrahman",
-      role: "Pembina Tahfidz",
+      role: "Pengasuh",
       image: "/Abi Kh Dadun Abdurrohim bin Kh Abdurrahman.png",
       focus: "Membimbing hafalan, tahsin, tajwid, dan murojaah harian.",
       badge: "Tahfidz",
@@ -138,7 +138,7 @@ const homeData = {
     {
       iconKey: "home",
       name: "Akang Haji Fitroh Burhani",
-      role: "Pembina Asrama",
+      role: "Pengasuh",
       image: "/Akang Haji Fitroh Burhani.png",
       focus: "Mendampingi kedisiplinan, kebersihan, dan kemandirian santri.",
       badge: "Asrama",
@@ -146,16 +146,16 @@ const homeData = {
     {
       iconKey: "book",
       name: "Umi Hj Siti Aisya binti H Ahmad Amir",
-      role: "Pembina Akademik",
+      role: "Pendiri Pondok Pesantren",
       image: "/Umi Hj Siti Aisya binti H Ahmad Amir.png",
       focus:
         "Membimbing pembelajaran formal, kedisiplinan belajar, dan perkembangan akademik santri.",
-      badge: "Akademik",
+      badge: "Pendiri",
     },
     {
       iconKey: "users",
       name: "Ustadzah, hj. Pipih Muraapi'ah s. pd. i",
-      role: "Pimpinan",
+      role: "Pengasuh",
       image: "/Ustadzah, hj. Pipih Muraapi'ah s. pd. i.png",
       focus:
         "Mendampingi kegiatan harian santri, pembinaan karakter, kedisiplinan, dan kehidupan pesantren.",
