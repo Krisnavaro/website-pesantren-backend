@@ -1,4 +1,18 @@
+/**
+ * @file publicRoutes.js
+ * @description Menyediakan endpoint publik (tidak memerlukan autentikasi) untuk mendapatkan data
+ * konten statis/dinamis yang digunakan oleh halaman utama website seperti home, program, pendidikan,
+ * fasilitas, dan konfigurasi umum lainnya.
+ * @module routes/publicRoutes
+ */
 import express from "express";
+import { supabase } from "../config/supabase.js";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const router = express.Router();
 
@@ -36,62 +50,40 @@ const homeData = {
 
   heroStats: [
     { value: "100+", label: "Santri" },
-    { value: "3", label: "Program" },
+    { value: "6", label: "Program" },
     { value: "3+", label: "Jenjang" },
-  ],
-
-  storyChapters: [
-    {
-      number: "01",
-      label: "Harapan",
-      title: "Orang tua mencari tempat yang aman untuk masa depan anak.",
-      desc: "Bukan hanya tempat belajar. Tetapi lingkungan yang membentuk ibadah, adab, disiplin, dan kemandirian.",
-      image: "/harapan.png",
-    },
-    {
-      number: "02",
-      label: "Adaptasi",
-      title: "Santri mulai belajar hidup terarah dan mandiri.",
-      desc: "Dari bangun pagi, shalat berjamaah, belajar bersama, sampai menjaga adab kepada guru dan teman.",
-      image: "/adaptasi.png",
-    },
-    {
-      number: "03",
-      label: "Pembinaan",
-      title: "Ilmu agama dan pendidikan formal berjalan berdampingan.",
-      desc: "Al-Qur’an, akademik, kegiatan santri, dan pembinaan karakter menjadi bagian dari proses yang saling melengkapi.",
-      image: "/pembinaan.png",
-    },
-    {
-      number: "04",
-      label: "Masa Depan",
-      title: "Lahir santri yang berilmu, beradab, dan siap berkembang.",
-      desc: "Perjalanan di pesantren menjadi bekal untuk membangun pribadi yang kuat, santun, dan memiliki arah hidup.",
-      image: "/masadepan.png",
-    },
   ],
 
   programs: [
     {
-      iconKey: "mosque",
-      title: "Hadroh",
-      tag: "Seni Islami",
-      image: "/hadroh.jpg",
-      desc: "Melatih kekompakan, keberanian tampil, dan kecintaan kepada sholawat.",
-    },
-    {
+      title: "Tahfidzul Qur'an",
       iconKey: "quran",
-      title: "MTQ",
-      tag: "Tilawah Qur’an",
-      image: "/mtq.jpg",
-      desc: "Membina bacaan Al-Qur’an, tajwid, makharijul huruf, dan irama.",
+      desc: "Program menghafal Al-Qur'an dengan target hafalan dan muroja'ah yang terstruktur.",
     },
     {
-      iconKey: "camp",
-      title: "Pramuka",
-      tag: "Mandiri & Disiplin",
-      image: "/pramuka.png",
-      desc: "Membentuk kedisiplinan, kepemimpinan, kerja sama, dan tanggung jawab.",
+      title: "Muhadhoroh",
+      iconKey: "teacher",
+      desc: "Melatih keberanian, kemampuan berbicara, dan penyampaian dakwah di depan umum.",
+    },
+    {
+      title: "Kaligrafi",
+      iconKey: "book",
+      desc: "Pembelajaran seni tulis Arab untuk mengembangkan kreativitas dan kecintaan terhadap Al-Qur'an.",
+    },
+    {
+      title: "Majelis Ta'lim",
+      iconKey: "mosque",
+      desc: "Kajian rutin untuk memperdalam pemahaman agama dan meningkatkan keimanan santri.",
+    },
+    {
+      title: "Kitab Kuning",
+      iconKey: "book",
+      desc: "Pembelajaran kitab-kitab turats sebagai dasar pemahaman ilmu syar'i.",
+    },
+    {
+      title: "Olahraga",
+      iconKey: "star",
+      desc: "Kegiatan olahraga untuk menjaga kesehatan, kebugaran, dan kekompakan santri.",
     },
   ],
 
@@ -120,30 +112,6 @@ const homeData = {
 
   pembina: [
     {
-      iconKey: "teacher",
-      name: "Abah Kh Abdurrahman bin Kh Abdul Karim",
-      role: "Pendiri Pondok Pesantren",
-      image: "/Abah Kh Abdurrahman bin Kh Abdul Karim.png",
-      focus: "Pembinaan akhlak, adab, ibadah, dan arah pendidikan santri.",
-      badge: "Pendiri",
-    },
-    {
-      iconKey: "quran",
-      name: "Abi Kh Dadun Abdurrohim bin Kh Abdurrahman",
-      role: "Pengasuh",
-      image: "/Abi Kh Dadun Abdurrohim bin Kh Abdurrahman.png",
-      focus: "Membimbing hafalan, tahsin, tajwid, dan murojaah harian.",
-      badge: "Tahfidz",
-    },
-    {
-      iconKey: "home",
-      name: "Akang Haji Fitroh Burhani",
-      role: "Pengasuh",
-      image: "/Akang Haji Fitroh Burhani.png",
-      focus: "Mendampingi kedisiplinan, kebersihan, dan kemandirian santri.",
-      badge: "Asrama",
-    },
-    {
       iconKey: "book",
       name: "Umi Hj Siti Aisya binti H Ahmad Amir",
       role: "Pendiri Pondok Pesantren",
@@ -153,13 +121,12 @@ const homeData = {
       badge: "Pendiri",
     },
     {
-      iconKey: "users",
-      name: "Ustadzah, hj. Pipih Muraapi'ah s. pd. i",
-      role: "Pengasuh",
-      image: "/Ustadzah, hj. Pipih Muraapi'ah s. pd. i.png",
-      focus:
-        "Mendampingi kegiatan harian santri, pembinaan karakter, kedisiplinan, dan kehidupan pesantren.",
-      badge: "Kesantrian",
+      iconKey: "quran",
+      name: "Abi Kh Dadun Abdurrohim bin Kh Abdurrahman",
+      role: "Pendiri Pondok Pesantren",
+      image: "/Abi Kh Dadun Abdurrohim bin Kh Abdurrahman.png",
+      focus: "Membimbing hafalan, tahsin, tajwid, dan murojaah harian.",
+      badge: "Pendiri",
     },
   ],
 };
@@ -171,8 +138,8 @@ const homeData = {
 const programPageData = {
   hero: {
     badge: "Program Unggulan Pesantren",
-    title: "Membentuk santri yang",
-    highlight: "aktif, mandiri, dan berakhlak.",
+    title: "Mondok bukan sekadar sekolah.",
+    highlight: "Ini perjalanan hidup.",
     desc: "Program pembinaan Al-Furqon dirancang untuk mengembangkan spiritual, karakter, kreativitas, keberanian, dan kemampuan sosial santri secara seimbang.",
     arabic: "وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا",
     source: "QS. At-Talaq : 2",
@@ -180,36 +147,7 @@ const programPageData = {
   },
 
   programs: [
-    {
-      title: "Hadroh",
-      subtitle: "Seni Islami & Sholawat",
-      iconKey: "mosque",
-      image: "/hadroh.jpg",
-      desc: "Membina santri dalam seni rebana, sholawat, kekompakan tim, keberanian tampil, dan kecintaan terhadap budaya Islami.",
-      longDesc:
-        "Santri dilatih tampil percaya diri dalam kegiatan pesantren, acara keagamaan, dan perlombaan. Program ini membentuk disiplin, kekompakan, adab, serta keberanian di depan umum.",
-      features: ["Rebana", "Sholawat", "Kekompakan", "Percaya Diri"],
-    },
-    {
-      title: "MTQ",
-      subtitle: "Tilawah & Tahsin Al-Qur’an",
-      iconKey: "quran",
-      image: "/mtq.jpg",
-      desc: "Berfokus pada pembinaan tilawah Al-Qur’an, tahsin, tajwid, makharijul huruf, irama, dan pembiasaan akhlak Qurani.",
-      longDesc:
-        "Pembinaan dilakukan bertahap agar santri mampu membaca Al-Qur’an dengan tartil, indah, dan sesuai kaidah. Santri diarahkan mencintai Al-Qur’an dalam kehidupan sehari-hari.",
-      features: ["Tahsin", "Tajwid", "Tilawah", "Akhlak Qurani"],
-    },
-    {
-      title: "Pramuka",
-      subtitle: "Mandiri, Disiplin & Tangguh",
-      iconKey: "campground",
-      image: "/pramuka.png",
-      desc: "Membangun karakter disiplin, tanggung jawab, kepemimpinan, kerja sama, dan kesiapan menghadapi tantangan.",
-      longDesc:
-        "Melalui latihan lapangan, kegiatan kemah, kerja tim, dan aktivitas sosial, santri dibentuk menjadi pribadi aktif, mandiri, peduli, dan bertanggung jawab.",
-      features: ["Leadership", "Mandiri", "Kerja Sama", "Disiplin"],
-    },
+
     {
       title: "Tahfidzul Qur'an",
       subtitle: "Hafalan & Murajaah",
@@ -274,7 +212,7 @@ const programPageData = {
 
   stats: [
     { value: "100+", label: "Santri", iconKey: "users" },
-    { value: "3", label: "Program", iconKey: "book" },
+    { value: "6", label: "Program", iconKey: "book" },
     { value: "3", label: "Jenjang", iconKey: "award" },
     { value: "50+", label: "Pembimbing", iconKey: "hands" },
   ],
@@ -303,9 +241,6 @@ const programPageData = {
   ],
 
   gallery: [
-    "/hadroh.jpg",
-    "/mtq.jpg",
-    "/pramuka.png",
     "/doa.png",
     "/lulus.png",
     "/eid.png",
@@ -392,9 +327,9 @@ const pendidikanPageData = {
     {
       level: "01",
       title: "MTs Setara",
-      shortTitle: "SMP",
+      shortTitle: "MTS",
       iconKey: "graduate",
-      bgImage: "/icon_smp.png",
+      bgImage: "/icon_mts.png",
       fallbackImage: "/smk.jpg",
       color: "from-emerald-400 via-green-500 to-emerald-800",
       subtitle: "Fondasi karakter & adab sebelum ilmu tinggi",
@@ -510,7 +445,7 @@ const fasilitasPageData = {
   facilities: [
     {
       id: 1,
-      name: "Masjid Al-Barokah",
+      name: "Masjid Al Furqon",
       desc: "Pusat ibadah, kajian, dzikir, shalat berjamaah, dan pembinaan spiritual santri setiap hari.",
       detail:
         "Masjid menjadi pusat kehidupan pesantren. Santri dibiasakan menjaga ibadah, mengikuti kajian, dan membangun kedekatan dengan Al-Qur’an dalam suasana yang nyaman.",
@@ -561,6 +496,50 @@ const fasilitasPageData = {
       iconKey: "sport",
       img: "Lapangan-olahraga.jpeg",
       category: "Aktivitas",
+      featured: false,
+    },
+    {
+      id: 6,
+      name: "Aula Serbaguna",
+      desc: "Ruang pertemuan besar untuk berbagai acara pesantren.",
+      detail:
+        "Aula digunakan untuk acara resmi, pertemuan wali santri, seminar, dan kegiatan besar lainnya yang membutuhkan kapasitas ruangan yang luas.",
+      iconKey: "users",
+      img: "Aula.jpg",
+      category: "Aktivitas",
+      featured: false,
+    },
+    {
+      id: 7,
+      name: "Majelis Ta'lim",
+      desc: "Tempat khusus untuk kajian kitab dan diskusi keislaman.",
+      detail:
+        "Majelis menjadi pusat pendalaman ilmu agama, tempat santri mengikuti pengajian rutin dan kajian kitab kuning bersama para ustadz.",
+      iconKey: "quran",
+      img: "Majelis.jpg",
+      category: "Ibadah",
+      featured: false,
+    },
+    {
+      id: 8,
+      name: "Perpustakaan",
+      desc: "Pusat literasi dan referensi buku-buku agama maupun umum.",
+      detail:
+        "Perpustakaan menyediakan berbagai macam buku referensi, kitab kuning, buku pelajaran, dan literatur umum untuk menunjang kegiatan belajar.",
+      iconKey: "book",
+      img: "Perpustakaan.jpg",
+      category: "Pendidikan",
+      featured: false,
+    },
+    {
+      id: 9,
+      name: "Laboratorium Komputer",
+      desc: "Fasilitas praktik IT dan pengembangan skill digital santri.",
+      detail:
+        "Dilengkapi dengan perangkat komputer untuk mendukung pembelajaran teknologi informasi, multimedia, dan keterampilan digital.",
+      iconKey: "laptop",
+      img: "Lab-komputer.jpg",
+      category: "Pendidikan",
       featured: false,
     },
   ],
@@ -623,6 +602,23 @@ router.get("/fasilitas", (req, res) => {
     page: "fasilitas",
     data: fasilitasPageData,
   });
+});
+
+router.get("/jurusan", async (req, res) => {
+  try {
+    const jurusanPath = path.join(__dirname, "../data/jurusan.json");
+    if (!fs.existsSync(jurusanPath)) {
+      return res.json({ success: true, data: [] });
+    }
+    const data = JSON.parse(fs.readFileSync(jurusanPath, "utf8"));
+
+    res.json({
+      success: true,
+      data,
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
 });
 
 export default router;
